@@ -1,10 +1,7 @@
-// removing as much of the DRY code as I can while making some sense
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const PORT = 8000;
-
-// Synchronous file reading
 const sendResponse = (req, res, filename) => {
   try {
     let data = fs.readFileSync(path.join(__dirname, "pages", filename));
@@ -35,7 +32,6 @@ const server = http.createServer((req, res) => {
     sendResponse(req, res, "error.html");
   }
 });
-
 server.listen(8000, () => {
   console.log(`http://localhost:${PORT}`);
 });
